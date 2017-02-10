@@ -1,0 +1,15 @@
+.paginationLabel{
+	display: inline-block;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+	color: #fff;
+    background-color: #cccccc;
+	cursor:default;
+	border-radius: 4px;
+}
