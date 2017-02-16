@@ -26638,7 +26638,7 @@
 		componentDidMount: function componentDidMount() {
 			var _this = this;
 	
-			(0, _client2.default)({ method: 'GET', path: '/api/forms?projection=fp' }).done(function (response) {
+			(0, _client2.default)({ method: 'GET', path: '/api/forms' }).done(function (response) {
 				_this.setState({
 					forms: response.entity._embedded.forms
 				});

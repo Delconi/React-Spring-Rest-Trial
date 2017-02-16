@@ -25,7 +25,7 @@ export default React.createClass({
 	},
 	
 	componentDidMount() {
-		Client({method: 'GET', path: '/api/forms?projection=fp'}).done(response => {
+		Client({method: 'GET', path: '/api/forms'}).done(response => {
 			this.setState({
 				forms:response.entity._embedded.forms
 			});
