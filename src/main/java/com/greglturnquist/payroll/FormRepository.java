@@ -16,15 +16,13 @@
 package com.greglturnquist.payroll;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 /**
  * @author Greg Turnquist
  */
 // tag::code[]
 
-@RepositoryRestResource(exported=false)
-public interface TextFieldRepository extends CrudRepository<TextField, Long> {
+public interface FormRepository extends CrudRepository<Form, Long> {
 
 }
 // end::code[]

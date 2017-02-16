@@ -53,9 +53,9 @@ public class FormGroup {
 		this.textFields = textFields;
 	}
 
-	public Page getPage(){
-		return page;
-	}	
+	//public Page getPage(){
+	//	return page;
+	//}	
 
 	public void setPage(Page page){
 		this.page = page;

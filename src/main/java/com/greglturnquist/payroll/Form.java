@@ -27,25 +27,21 @@ import java.util.Set;
  */
 // tag::code[]
 @Entity
-public class Page {
+public class Form {
 
-	private @Id @GeneratedValue Long pid;
+	private @Id @GeneratedValue Long fid;
 	private String name;
 	private String label;
 	
-	@OneToMany(targetEntity = FormGroup.class, mappedBy = "page",cascade = CascadeType.ALL)
-	private List<FormGroup> formGroups = new ArrayList<FormGroup>();
-	
-	@ManyToOne(targetEntity = Form.class)
-	@JoinColumn(name="fid")
-	private Form form;
+	@OneToMany(targetEntity = Page.class, mappedBy = "form",cascade = CascadeType.ALL)
+	private List<Page> pages = new ArrayList<Page>();
 
-	private Page() {}
+	private Form() {}
 
-	public Page(String name, String label, List<FormGroup> formGroups) {
+	public Form(String name, String label, List<Page> pages) {
 		this.name = name;
 		this.label = label;
-		this.formGroups = formGroups;
+		this.pages = pages;
 	}
 	
 	public String getName(){
@@ -64,20 +60,12 @@ public class Page {
 		this.label = label;
 	}
 
-	public List<FormGroup> getFormGroups(){
-		return formGroups;
+	public List<Page> getPages(){
+		return pages;
 	}
 
-	public void setFormGroups(List<FormGroup> formGroups){
-		this.formGroups = formGroups;
-	}
-	
-	//public Form getform(){
-		//return form;
-	//}
-	
-	public void setform(Form form){
-		this.form = form;
+	public void setgetPages(List<Page> getPages){
+		this.pages = pages;
 	}
 }
 // end::code[]

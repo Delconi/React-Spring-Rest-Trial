@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import GenForm from './form.js';
+import GenForm from './formController.js';
 import { Router, Route, hashHistory } from 'react-router';
 
 ReactDOM.render(

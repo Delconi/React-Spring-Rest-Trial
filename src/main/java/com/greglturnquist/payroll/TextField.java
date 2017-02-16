@@ -37,10 +37,6 @@ public class TextField {
 		this.value = value;
 	}
 
-	public FormGroup getFormGroup(){
-		return formGroup;
-	}	
-
 	public void setFormGroup(FormGroup formGroup){
 		this.formGroup = formGroup;
 	}	

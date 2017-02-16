@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Client from './client';
-import Groups from './groups';
+import Page from './page';
 
 export default React.createClass({
 	getInitialState: function() {
 		return {
-			pages: [],
+			forms: [],
 			data: []
 		}
 	},
@@ -25,30 +25,40 @@ export default React.createClass({
 	},
 	
 	componentDidMount() {
-		Client({method: 'GET', path: '/api/pages'}).done(response => {
+		Client({method: 'GET', path: '/api/forms?projection=fp'}).done(response => {
 			this.setState({
-				pages:response.entity._embedded.pages
+				forms:response.entity._embedded.forms
 			});
-			console.log("Fetching from: /api/pages")
-			console.log("Pages Data : ", response);
+			console.log("Fetching from: /api/forms?projection=fp")
+			console.log("Forms Data : ", this.state.forms);
 		});
 	},
 	
 	render() {	
 		var _that = this;
 		return <div>
-				{
-					this.state.pages.map(function(item,i){		//Simulating multiple pages
+			{
+				this.state.forms.map(
+					function(form,i){
 						return(
 							<div key={i}>
-								<div className="well" id={item.name}>
-									Page name: {item.label}
-								</div>	
-								<Groups groupLink = {item._links.formGroups.href} onChange={_that.handleChange}/>
+								<div className="well" >
+									<h1>Form Name: {form.name}</h1>
+								</div>
+								{
+									form.pages.map(
+										function(page,j){
+											return(
+												<Page pageDom={page} key={j} onChange={_that.handleChange}/>
+											)
+										}
+									)
+								}
 							</div>
 						)
-					})
-				}
+					}
+				)
+			}
 		</div>
 	}
 })

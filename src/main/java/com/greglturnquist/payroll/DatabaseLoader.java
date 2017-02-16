@@ -17,12 +17,14 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final TextFieldRepository tfRepository;
 	private final FormGroupRepository fgRepository;
 	private final PageRepository pRepository;
+	private final FormRepository fRepository;
 
 	@Autowired
-	public DatabaseLoader(TextFieldRepository tfRepository, FormGroupRepository fgRepository, PageRepository pRepository) {
+	public DatabaseLoader(TextFieldRepository tfRepository, FormGroupRepository fgRepository, PageRepository pRepository, FormRepository fRepository) {
 		this.tfRepository = tfRepository;
 		this.fgRepository = fgRepository;
 		this.pRepository = pRepository;
+		this.fRepository = fRepository;
 	}
 
 	public void run(String... strings) throws Exception {
@@ -57,7 +59,7 @@ public class DatabaseLoader implements CommandLineRunner {
 
 		//Page//
 		List<FormGroup> formGroups = new ArrayList<FormGroup>();
-		Page mainPage = new Page("mainPage","Main Page", formGroups);
+		Page mainPage = new Page("Page Number 1","Page Number 1", formGroups);
 		
 		group1.setPage(mainPage);
 		formGroups.add(group1);
@@ -65,7 +67,17 @@ public class DatabaseLoader implements CommandLineRunner {
 		group2.setPage(mainPage);
 		formGroups.add(group2);
 		
-		this.pRepository.save(mainPage);
+		//Form//
+		
+		List<Page> pages = new ArrayList<Page>();
+		Form mainForm = new Form("One and Only Form", "The Form Is Here", pages);
+		
+		mainPage.setform(mainForm);
+		pages.add(mainPage);
+		
+		this.fRepository.save(mainForm);
+		
+		//this.pRepository.save(mainPage);
 
 	}
 }
